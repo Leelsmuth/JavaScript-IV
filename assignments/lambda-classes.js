@@ -21,10 +21,9 @@ class Instructor extends Person1 {
         return `Today we are learning about ${subject}`;
     }
     grade(student,subject) {
-        return `${student.name} receives a perfect score on ${subject}`;
+        return `${student} receives a perfect score on ${subject}`;
     }
 }
-var gabe = new Instructor({name: 'Gabe', age: 42, location: 'England', specialty: 'React', favLanguage: 'JavaScript', catchPhrase: 'Turn on your Cameras so your Team Leads can spy on you', })
 
 class ProjectManagers extends Instructor {
     constructor(projectManagersAttributes) {
@@ -33,10 +32,10 @@ class ProjectManagers extends Instructor {
         this.favInstructor = projectManagersAttributes.favInstructor;
     }
     standUp(channel) {
-        return `${name} announces to ${channel}, @channel standy times!`
+        return `${this.name} announces to ${channel}, @channel standy times!`
     }
     debugsCode(student,subject) {
-        return `${name} debugs ${student.name}'s code on ${subject}`
+        return `${this.name} debugs ${student}'s code on ${subject}`
     }
 }
 
@@ -48,14 +47,29 @@ class Student extends Person1 {
         this.favSubjects = studentAttributes.favSubjects;
     }
     listsSubjects() {
-        
+        this.favSubjects.forEach(function(favor) {
+          console.log(favor);
+        });
     }
+
     PRAssignment(subject) {
-        return `${student.name} has submitted a PR for ${subject}`;
+        return `${this.name} has submitted a PR for ${subject}`;
     }
     sprintChallenge(subject) {
-        return `${student.name} has begun sprint challenge on ${subject}`
+        return `${this.name} has begun sprint challenge on ${subject}`
     }
 }
 
-var femi = new Student({name: 'Oluwafemi', age: 29, location: 'Nigeria', previousBackground: 'Banking', className: 'WEBEU3', favSubjects: {subject1: 'Web-design', subject2: 'Python', subject3: 'UX design', subject4: 'JavaScript'}});
+var femi = new Student({
+                name: 'Oluwafemi', age: 29, location: 'Nigeria', 
+                previousBackground: 'Banking', className: 'WEBEU3', 
+                favSubjects: ['Web-design', 'Python', 'UX design', 'JavaScript']});
+
+var martin = new ProjectManagers({name: 'Martin', age: 25, location: 'Ghana', 
+                                specialty: 'Project Management', favLanguage: 'Java', 
+                                catchPhrase: 'Super... Awesome.. Awesome', gradClassName: 'WEBEU2', 
+                                favInstructor: 'Gabriel'});
+
+var gabe = new Instructor({name: 'Gabe', age: 42, location: 'England', 
+                           specialty: 'React', favLanguage: 'JavaScript', 
+                           catchPhrase: 'Turn on your Cameras so your Team Leads can spy on you', });                               
